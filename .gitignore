@@ -11,3 +11,6 @@ dist
 dist/*
 *.pyc
 *.pdb
+Debug
+Release
+obj
