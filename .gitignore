@@ -4,6 +4,13 @@
 *.class
 *.pyc
 *.pdb
+*.mdb
+*.ldb
+*.sln
+*.config
+Debug
+Release
+obj
 dist
 dist/*
 build
