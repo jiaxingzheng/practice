@@ -1,3 +1,13 @@
-.o
-.a
-
+*.obj
+*.swp
+*.mdb
+*.sln
+*.config
+*.[oa]
+*.class
+build
+build/*
+dist
+dist/*
+*.pyc
+*.pdb
