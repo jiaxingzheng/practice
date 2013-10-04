@@ -49,10 +49,6 @@ public:
 		this->da=d.distance(a);
 		if(a.x==b.x&&a.y==b.y||a.x==c.x&&a.y==c.y||a.x==d.x&&a.y==d.y||b.x==c.x&&b.y==c.y||b.x==d.x&&b.y==d.y||c.x==d.x&&c.y==d.y)
 			throw runtime_error("it is not a quagrangle");
-		else if(a.x-b.x==0&&c.x-d.x==0)
-		{
-			throw runtime_error("it is not a quagrangle");
-		}
 		else if(a.x-b.x==0)
 		{
 			if(c.x==0||d.x==0)
@@ -73,11 +69,16 @@ public:
 				throw runtime_error("it is not a quagrangle");
 		}
 	}
+	float getLenth()
+	{
+		return ab+bc+cd+da;
+	}
 	float getArea()
 	{
 		float p=(ab+bc+ac)/2;
 		float p1=(cd+da+ac)/2;
 		return sqrt(p*(p-ab)*(p-bc)*(p-ac))+sqrt(p1*(p1-cd)*(p1-da)*(p1-ac));
+	
 	}
 };
 int main(int argc,const char* argv[])
@@ -91,6 +92,7 @@ int main(int argc,const char* argv[])
     try{
 		Quadrangle t(a,b,c,d);
 		cout<<t.getArea()<<endl;
+		cout<<t.getLenth()<<endl;
 	}catch(runtime_error& message)
 	{
 		cout<<message.what()<<endl;
