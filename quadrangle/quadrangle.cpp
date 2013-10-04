@@ -18,10 +18,11 @@ public:
 		this->x=p.x;
 		this->y=p.y;
 	}
-	distance(const Point&p)
+	float distance(const Point&p)
 	{
-		return sqrt((this->x-p.x)*(this->x-p.x)+(this->y-p.y)*(this->y-p.y))
+		return sqrt((this->x-p.x)*(this->x-p.x)+(this->y-p.y)*(this->y-p.y));
 	}
+	friend class Quadrangle;
 };
 class Quadrangle{
 private:
@@ -79,10 +80,10 @@ public:
 		return sqrt(p*(p-ab)*(p-bc)*(p-ac))+sqrt(p1*(p1-cd)*(p1-da)*(p1-ac));
 	}
 };
-int main()
+int main(int argc,const char* argv[])
 {
 	int s,r,f,g,h,j,k,l;
-	cin>>s,r,f,g,h,j,k,l;
+	cin>>s>>r>>f>>g>>h>>j>>k>>l;
 	Point a(s,r);
 	Point b(f,g);
 	Point c(h,j);
