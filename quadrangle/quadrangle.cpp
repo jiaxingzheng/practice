@@ -33,10 +33,22 @@ private:
 	float k2;
 	float c1;
 	float c2;
+	float ab;
+	float bc;
+	float ac;
+	float cd;
+	float da;
 public:
 	Quadrangle(const Point&p1,const Point&p2,const Point&p3,const Point&p4):a(p1),b(p2),c(p3),d(p4)
 	{
-		if(a.x-b.x==0&&c.x-d.x==0)
+		this->ab=a.distance(b);
+		this->bc=b.distance(c);
+		this->ac=a.distance(c);
+		this->cd=c.distance(d);
+		this->da=d.distance(a);
+		if(a.x==b.x&&a.y==b.y||a.x==c.x&&a.y==c.y||a.x==d.x&&a.y==d.y||b.x==c.x&&b.y==c.y||b.x==d.x&&b.y==d.y||c.x==d.x&&c.y==d.y)
+			throw runtime_error("it is not a quagrangle");
+		else if(a.x-b.x==0&&c.x-d.x==0)
 		{
 			throw runtime_error("it is not a quagrangle");
 		}
@@ -56,15 +68,34 @@ public:
 		    this->k2=(c.y-d.y)/(c.x-d.x);
 		    this->c1=a.y-k1*a.x;
 		    this->c2=c.y-k2*c.x;
-		    if(k1==k2&&c1==c2)
+		    if(c.y==c.x*k1+c1||d.y==d.x*k1+c1||a.y==a.x*k2+c2||b.y==b.x*k2+c2)
 				throw runtime_error("it is not a quagrangle");
 		}
 	}
 	float getArea()
 	{
-
-
+		float p=(ab+bc+ac)/2;
+		float p1=(cd+da+ac)/2;
+		return sqrt(p*(p-ab)*(p-bc)*(p-ac))+sqrt(p1*(p1-cd)*(p1-da)*(p1-ac));
 	}
+};
+int main()
+{
+	int s,r,f,g,h,j,k,l;
+	cin>>s,r,f,g,h,j,k,l;
+	Point a(s,r);
+	Point b(f,g);
+	Point c(h,j);
+	Point d(k,l);
+    try{
+		Quadrangle t(a,b,c,d);
+		cout<<t.getArea()<<endl;
+	}catch(runtime_error& message)
+	{
+		cout<<message.what()<<endl;
+	}
+	return 0;
+}
 
 
 
