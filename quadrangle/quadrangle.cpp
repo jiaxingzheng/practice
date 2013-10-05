@@ -69,21 +69,23 @@ public:
 				throw runtime_error("it is not a quagrangle");
 		}
 	}
+	
 	float getLenth()
 	{
-		return ab+bc+cd+da;
+		return this->ab+this->bc+this->cd+this->da;
 	}
 	float getArea()
 	{
-		float p=(ab+bc+ac)/2;
-		float p1=(cd+da+ac)/2;
-		return sqrt(p*(p-ab)*(p-bc)*(p-ac))+sqrt(p1*(p1-cd)*(p1-da)*(p1-ac));
-	
+		float p=(this->ab+this->bc+this->ac)/2;
+		float p1=(this->cd+this->da+this->ac)/2;
+		float area=sqrt(p*(p-this->ab)*(p-this->bc)*(p-this->ac))+sqrt(p1*(p1-this->cd)*(p1-this->da)*(p1-this->ac));
+	    return area;
 	}
 };
 int main(int argc,const char* argv[])
 {
 	int s,r,f,g,h,j,k,l;
+	cout<<"please input point a,b,c,d in turn."<<endl;
 	cin>>s>>r>>f>>g>>h>>j>>k>>l;
 	Point a(s,r);
 	Point b(f,g);
@@ -91,8 +93,8 @@ int main(int argc,const char* argv[])
 	Point d(k,l);
     try{
 		Quadrangle t(a,b,c,d);
-		cout<<t.getArea()<<endl;
-		cout<<t.getLenth()<<endl;
+		cout<<"the area is "<<t.getArea()<<endl;
+		cout<<"the perimeter is "<<t.getLenth()<<endl;
 	}catch(runtime_error& message)
 	{
 		cout<<message.what()<<endl;
