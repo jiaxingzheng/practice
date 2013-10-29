@@ -5,7 +5,7 @@ ArrayList::ArrayList(int size)
 	sizeOfElems=0;
 	sizeOfAllocatedMemory=size;
 }
-ArrayList(const ArrayList&list)
+ArrayList::ArrayList(const ArrayList&list)
 {
 	elems=new ElemType[list.sizeOfAllocatedMemory];
 	sizeOfElems=list.sizeOfElems;
@@ -17,7 +17,7 @@ ArrayList(const ArrayList&list)
 
 
 }
-~ArrayList()
+ArrayList::~ArrayList()
 {
 	delete []elems;
 }
@@ -31,13 +31,13 @@ void ArrayList::reallocate()
 	ElemType *newElems=new ElemType[newSizeOfAllocatedMemory];
 	for(int i=0;i<sizeOfElems;i++)
 	{
-		newElems[i]=elem[i];
+		newElems[i]=elems[i];
 	}
 	delete []elems;
 	elems=newElems;
 	sizeOfAllocatedMemory=newSizeOfAllocatedMemory;
 }
-void ArrayList::add(int index,ElemType e);
+void ArrayList::add(int index,ElemType e)
 {
 
 	if(index>sizeOfElems||index<0)
@@ -56,13 +56,13 @@ void ArrayList::add(int index,ElemType e);
 	elems[index]=e;
 	sizeOfElems=newSizeOfElems;
 }
-void add(ElemType e)
+void ArrayList::add(ElemType e)
 {
 	add(this->sizeOfElems,e);
 }
 void ArrayList::remove(int index=0)
 {
-	newSizeOfElems=sizeOfElems-1;
+	int newSizeOfElems=sizeOfElems-1;
 	if(index<0||index>newSizeOfElems)
 	{
 		throw runtime_error("index out of bounds!");
@@ -76,6 +76,10 @@ void ArrayList::remove(int index=0)
 		elems[i]=elems[i+1];
 	}
 	sizeOfElems=newSizeOfElems;
+}
+void ArrayList::remove()
+{
+	remove(0);
 }
 void ArrayList::clear()
 {
