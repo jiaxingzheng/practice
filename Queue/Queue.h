@@ -1,3 +1,10 @@
+//
+//Queue.h
+//Queue
+//
+//Created by 郑佳兴 on 13-10-30
+//
+
 #include<iostream>
 #include<stdexcept>
 using namespace std;

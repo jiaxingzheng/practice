@@ -1,3 +1,9 @@
+//
+// Queue.cpp
+// Queue
+//
+// Created by 郑佳兴 on 13-10-30
+// 
 #include "Queue.h"
 Queue::Queue(int size)
 {
@@ -31,12 +37,12 @@ bool Queue::queueFull()
 }
 void Queue::queueInsert(ElemType e)
 {
-	if(!queueFull())
+	if(!this->queueFull())
 		elems[sizeOfElems]=e;
 }
 void Queue::queueDelete()
 {
-	if(!queueEmpty())
+	if(!this->queueEmpty())
 	{
 		for(int i=0;i<sizeOfElems-1;i++)
 			elems[i]=elems[i+1];
@@ -45,14 +51,14 @@ void Queue::queueDelete()
 }
 ElemType Queue::queueFront()
 {
-	if(!queueEmpty())
+	if(!this->queueEmpty())
 		return elems[0];
 	else
 		throw runtime_error("The queue is empty!");
 }
 ElemType Queue::queueRear()
 {
-	if(!queueEmpty())
+	if(!this->queueEmpty())
 		return elems[sizeOfElems-1];
 	else
 		throw runtime_error("The queue is empty!");
