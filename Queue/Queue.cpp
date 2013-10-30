@@ -1,4 +1,4 @@
-#include <Queue.h>
+#include "Queue.h"
 Queue::Queue(int size)
 {
 	elems=new ElemType[size];
@@ -19,24 +19,24 @@ Queue::~Queue()
 {
 	delete []elems;
 }
-bool Queue::queueEmpty()
+bool Queue::queueEmpty() 
 {
 	if(sizeOfElems=0)
 		return true;
 }
-bool Queue::queueFull()
+bool Queue::queueFull() 
 {
 	if(sizeOfElems=sizeOfAllocatedMemory)
 		return true;
 }
 void Queue::queueInsert(ElemType e)
 {
-	if(!this.queueFull())
+	if(!queueFull())
 		elems[sizeOfElems]=e;
 }
 void Queue::queueDelete()
 {
-	if(!this.queueEmpty())
+	if(!queueEmpty())
 	{
 		for(int i=0;i<sizeOfElems-1;i++)
 			elems[i]=elems[i+1];
@@ -45,15 +45,15 @@ void Queue::queueDelete()
 }
 ElemType Queue::queueFront()
 {
-	if(!this.queueEmpty())
-		return queue[0];
+	if(!queueEmpty())
+		return elems[0];
 	else
 		throw runtime_error("The queue is empty!");
 }
 ElemType Queue::queueRear()
 {
-	if(!this.queueEmpty())
-		return queue[sizeOfElems-1];
+	if(!queueEmpty())
+		return elems[sizeOfElems-1];
 	else
 		throw runtime_error("The queue is empty!");
 }
