@@ -27,38 +27,45 @@ Queue::~Queue()
 }
 bool Queue::queueEmpty() 
 {
-	if(sizeOfElems=0)
+	if(sizeOfElems==0)
 		return true;
 }
 bool Queue::queueFull() 
 {
-	if(sizeOfElems=sizeOfAllocatedMemory)
+	if(sizeOfElems==sizeOfAllocatedMemory)
 		return true;
 }
 void Queue::queueInsert(ElemType e)
 {
-	if(sizeOfElems!=sizeOfAllocatedMemory)
+	if(!queueFull())
+	{
 		elems[sizeOfElems]=e;
+		sizeOfElems++;
+	}
+	else
+		throw runtime_error("The queue is full!");
 }
 void Queue::queueDelete()
 {
-	if(sizeOfElems!=0)
+	if(!queueEmpty())
 	{
 		for(int i=0;i<sizeOfElems-1;i++)
 			elems[i]=elems[i+1];
 		sizeOfElems=sizeOfElems-1;
 	}
+	else
+		throw runtime_error("The queue is empty!");
 }
 ElemType Queue::queueFront()
 {
-	if(sizeOfElems!=0)
+	if(!queueEmpty())
 		return elems[0];
 	else
 		throw runtime_error("The queue is empty!");
 }
 ElemType Queue::queueRear()
 {
-	if(sizeOfElems!=0)
+	if(!queueEmpty())
 		return elems[sizeOfElems-1];
 	else
 		throw runtime_error("The queue is empty!");

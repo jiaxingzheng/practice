@@ -12,7 +12,7 @@ int main(int argc, const char * argv[])
 {
     try
 	{
-		Queue q1;
+		Queue q1(5);
 		//Insert elements into the queue of q1
 		q1.queueInsert(10);
 		q1.queueInsert(20);
@@ -21,8 +21,6 @@ int main(int argc, const char * argv[])
 		q1.queueInsert(50);
 		//output the elem in the rear of q1
       	cout<<"q1:"<<q1.queueRear()<<endl;
-		//make error
-		q1.queueInsert(60);
 
 
 		Queue q2(q1);
@@ -34,6 +32,7 @@ int main(int argc, const char * argv[])
 		q2.queueClear();
 		//make error
 		q2.queueDelete();
+		
 	}
 	catch (runtime_error& e)
 	{
@@ -41,4 +40,8 @@ int main(int argc, const char * argv[])
 	}
     return 0;
 }
-
+//the run result of the program:
+//q1:50
+//q2:20
+//Exception：The queue is empty!
+//
