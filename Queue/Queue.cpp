@@ -37,12 +37,12 @@ bool Queue::queueFull()
 }
 void Queue::queueInsert(ElemType e)
 {
-	if(!this->queueFull())
+	if(sizeOfElems!=sizeOfAllocatedMemory)
 		elems[sizeOfElems]=e;
 }
 void Queue::queueDelete()
 {
-	if(!this->queueEmpty())
+	if(sizeOfElems!=0)
 	{
 		for(int i=0;i<sizeOfElems-1;i++)
 			elems[i]=elems[i+1];
@@ -51,14 +51,14 @@ void Queue::queueDelete()
 }
 ElemType Queue::queueFront()
 {
-	if(!this->queueEmpty())
+	if(sizeOfElems!=0)
 		return elems[0];
 	else
 		throw runtime_error("The queue is empty!");
 }
 ElemType Queue::queueRear()
 {
-	if(!this->queueEmpty())
+	if(sizeOfElems!=0)
 		return elems[sizeOfElems-1];
 	else
 		throw runtime_error("The queue is empty!");
