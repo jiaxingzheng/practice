@@ -8,6 +8,9 @@
 *.ldb
 *.sln
 *.config
+*.depend
+*.layout
+*.cbp
 Debug
 Release
 obj
